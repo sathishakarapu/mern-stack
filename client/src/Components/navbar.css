@@ -1,0 +1,47 @@
+/* Navbar container */
+.navbar {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    background-color: #f8f9fa; /* Light background for the navbar */
+    padding: 10px 20px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow for the navbar */
+    border-radius: 5px; /* Optional: for rounded corners */
+  }
+  
+  /* Individual navbar items */
+  .navbar-item {
+    cursor: pointer;
+    padding: 10px 20px;
+    border-radius: 5px; /* Rounded corners for the buttons */
+    font-size: 16px;
+    color: #333; /* Default text color */
+    transition: all 0.3s ease-in-out; /* Smooth transitions for hover and active states */
+    text-align: center;
+  }
+  
+  /* Hover effect for navbar items */
+  .navbar-item:hover {
+    background-color: #e2e6ea; /* Light gray on hover */
+    color: #000; /* Darker text on hover */
+  }
+  
+  /* Active state for the selected navbar item */
+  .navbar-item.selected {
+    background-color: #007bff; /* Blue background for active state */
+    color: #fff; /* White text for better contrast */
+    box-shadow: 0px 4px 8px rgba(0, 123, 255, 0.5); /* Highlight effect */
+    font-weight: bold; /* Optional: Make the active item stand out more */
+  }
+  
+
+.logo-nav{
+    height: 30px;
+    width: 30px;
+    margin: 3px auto;
+}
+
+.logo-flex{
+    display: flex;
+    gap: 10px;
+}
