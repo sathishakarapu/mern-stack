@@ -11,10 +11,8 @@ const UpdateForm = ({ employee, onCancel, onSuccess }) => {
   const [file, setFile] = useState(null);
   const [error, setError] = useState("");
 
-  // Define handleSubmit function
   const handleSubmit = async (e) => {
     e.preventDefault();
-    // Validate the form
     if (
       !name ||
       !email ||
@@ -37,7 +35,6 @@ const UpdateForm = ({ employee, onCancel, onSuccess }) => {
     if (file) formData.append("file", file);
 
     try {
-      // Send the PUT request to update the employee
       await axios.put(
         `http://localhost:8080/employees/${employee._id}`,
         formData,
@@ -48,7 +45,6 @@ const UpdateForm = ({ employee, onCancel, onSuccess }) => {
         }
       );
 
-      // Show success message
       alert("Employee Updated Successfully!");
       onSuccess();
     } catch (error) {

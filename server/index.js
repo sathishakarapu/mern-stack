@@ -14,12 +14,6 @@ app.use("/uploads", express.static(path.join(__dirname, "uploads")));
 app.use(express.json());
 app.use(cors());
 
-app.get("/", (req, res) => {
-  res.json({
-    Message: "Server Running",
-  });
-});
-
 app.post("/register", async (req, res) => {
   const { name, email, password } = req.body;
 
@@ -227,15 +221,14 @@ app.get("/list", async (req, res) => {
 });
 
 app.get("/list/:id", async (req, res) => {
-  const { id } = req.params; // Use req.params to get the ID
+  const { id } = req.params;
   try {
-    const employee = await employeModel.findOne({ _id: id }); // Fetch a single employee
+    const employee = await employeModel.findOne({ _id: id });
 
     if (!employee) {
       return res.status(404).json({ message: "Employee not found" });
     }
 
-    // Create the full image URL
     const imageUrl = `${req.protocol}://${req.get(
       "host"
     )}/${employee.file.replace(/\\/g, "/")}`;
@@ -244,7 +237,7 @@ app.get("/list/:id", async (req, res) => {
       file: imageUrl,
     };
 
-    res.status(200).json(employeeWithFile); // Return the employee with updated file URL
+    res.status(200).json(employeeWithFile);
   } catch (err) {
     res.status(500).json({
       message: "Error fetching employee details",
@@ -291,7 +284,6 @@ app.put("/employees/:id", upload.single("file"), async (req, res) => {
     employee.designation = designation || employee.designation;
     employee.gender = gender || employee.gender;
 
-    // Make sure to parse courses from JSON if it's a string
     employee.courses = Array.isArray(courses)
       ? courses
       : JSON.parse(courses) || employee.courses;
